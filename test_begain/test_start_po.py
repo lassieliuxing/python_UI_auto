@@ -13,6 +13,8 @@ from page_objectes.login_page import LoginPage
 class Test_start_po:
     def setup_class(self):
         self.home = LoginPage().login()
+    def teardown_class(self):
+        self.home.do_quit()
 
 
     def test_create_order(self):
@@ -21,3 +23,4 @@ class Test_start_po:
             .create_order()\
             .get_operate_result()
         print(res)
+
