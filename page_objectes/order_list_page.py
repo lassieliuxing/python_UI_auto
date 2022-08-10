@@ -9,11 +9,13 @@ from utils.log_utils import logger
 
 class OrdersListPage(BasePage):
 
+    __MSG_ADD_OPERATE=(By.XPATH, "//*[text()='创建开单客户3']")
+
     def get_operate_result(self):
         logger.info("获取受理单列表页")
         # 获取新增受理单
         # 返回消息文本
-        res = self.driver.find_elements(By.XPATH, "//*[text()='创建开单客户3']")
+        res = self.wait_element_until_visible(self.__MSG_ADD_OPERATE)
         logging.info(f"断言获取到的实际结果为{res}")
         assert res != []
         return "创建成功"

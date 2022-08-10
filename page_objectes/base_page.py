@@ -37,7 +37,10 @@ class BasePage:
         self.driver.save_screenshot(image_path)
         allure.attach.file(image_path,name="picture",
                            attachment_type=allure.attachment_type.PNG)
-
+    def wait_element_until_visible(self,locator:tuple):
+        from selenium.webdriver.support.wait import WebDriverWait
+        from selenium.webdriver.support import expected_conditions
+        return WebDriverWait(self.driver,10).until(expected_conditions.visibility_of_element_located(locator))
 
 
 
