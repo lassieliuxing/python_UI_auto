@@ -5,6 +5,9 @@ from selenium.webdriver.common.by import By
 from page_objectes.base_page import BasePage
 
 
+divText="//*[text()='{0}']"
+
+
 class DispatchPage(BasePage):
     __INPUT_DRIVER_NAME=(By.XPATH,"//div[@data-testid='dispatch-waybill-drivers-select']//span[1]")
     __INPUT_DRIVER_PHONE=(By.XPATH,"//*[@data-testid='dispatch-waybill-drivers-phone-select']")
@@ -31,8 +34,10 @@ class DispatchPage(BasePage):
         # 只填写到付款
 
         self.do_find(self.__INPUT_DRIVER_NAME).click()
-        self.driver.implicitly_wait()
-        self.do_find(By.XPATH,"//*[text()='签收测试司机]").click()
+        # self.driver.implicitly_wait()
+        # e=self.do_find(By.XPATH,"//*[@title='签收测试司机']")
+        # self.do_find(By.XPATH,"//*[text()='签收测试司机']").click()
+        self.do_find(By.XPATH,divText.format("签收测试司机")).click()
         self.do_find(self.__BTN_DATA).click()
         self.do_find(self.__INPUT_DATA_TIME_NOW).click()
         self.do_send_keys("100",self.__INPUT_DELIVER_CASH)
