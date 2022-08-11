@@ -30,3 +30,7 @@ class HomePage(BasePage):
         self.do_find(self.__BTN_DISPATCH).click()
         from page_objectes.dispatch_list_page import DispatchListPage
         return DispatchListPage(self.driver)
+    def goto_order_statement_detail(self):
+        logger.info("进入到对账管理-应收明细页面")
+        from page_objectes.order_statement_detail_page import OrderStatementDetailPage
+        return OrderStatementDetailPage()

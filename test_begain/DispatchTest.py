@@ -9,5 +9,5 @@ class Test_Dispatch:
         # def teardown_class(self):
         #     self.home.do_quit()
         def test_dispatch(self):
-            self.home.goto_dispatch()  \
+            self.home.goto_dispatch() \
             .diapstch_order() .input_dispatch_with_deliver()
