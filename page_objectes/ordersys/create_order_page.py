@@ -1,5 +1,4 @@
 """创建受理单页"""
-import logging
 import time
 
 from selenium.webdriver.common.by import By
@@ -61,5 +60,5 @@ class CreateOrderPage(BasePage):
         self.do_find(self.__BTN_ORDER_SUBMIT).click()
         # self.get_screen()
         # ==>受理单
-        from page_objectes.order_list_page import OrdersListPage
+        from page_objectes.transport.ordermanagesys.order_list_page import OrdersListPage
         return OrdersListPage(self.driver)

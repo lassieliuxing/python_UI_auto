@@ -1,0 +1,2 @@
+class CommonShipperPage(BasePage):
+    pass

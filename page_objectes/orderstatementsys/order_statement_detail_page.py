@@ -1,6 +1,3 @@
-import logging
-
-
 class OrderStatementDetailPage:
 
     def order_price_revision(self):
@@ -19,7 +16,7 @@ class OrderStatementDetailPage:
 
     def order_price_detail(self):
 
-        from page_objectes.order_detail_page import OrderDetailPage
+        from page_objectes.transport.ordermanagesys.order_detail_page import OrderDetailPage
         return OrderDetailPage(self.driver)
         pass
     def goto_statement_verify(self):
@@ -27,5 +24,5 @@ class OrderStatementDetailPage:
         # 点击查询
         # 勾选受理单
         # 点击对账
-        from page_objectes.order_statement_verify_page import OrderStatementVerfyPage
+        from page_objectes.orderstatementsys.order_statement_verify_page import OrderStatementVerfyPage
         return OrderStatementVerfyPage()

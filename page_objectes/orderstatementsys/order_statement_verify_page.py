@@ -6,7 +6,7 @@ class OrderStatementVerfyPage:
         pass
 
     def goto_statementList_detail(self):
-        from page_objectes.statement_detail_page import StatementDetailPage
+        from page_objectes.orderstatementsys.statement_detail_page import StatementDetailPage
         return StatementDetailPage(self.driver)
 
     def statement_price_revision(self):
@@ -14,7 +14,7 @@ class OrderStatementVerfyPage:
         from page_objectes.price_revision_page import PriceRevisionPage
         return PriceRevisionPage(self.driver)
     def goto_statement_veried(self):
-        from page_objectes.order_statement_veried_page import OrderStatementVeriedPage
+        from page_objectes.orderstatementsys.order_statement_veried_page import OrderStatementVeriedPage
         return OrderStatementVeriedPage(self.driver)
         # 点击操作
         # 点击核销

@@ -4,6 +4,6 @@ class PriceRevisionPage:
         # 填写价格调整减少
         # 点击确认
         # 跳转应收明细页
-        from page_objectes.order_statement_detail_page import OrderStatementDetailPage
+        from page_objectes.orderstatementsys.order_statement_detail_page import OrderStatementDetailPage
         return OrderStatementDetailPage()
 
