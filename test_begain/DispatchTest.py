@@ -9,6 +9,9 @@ class Test_Dispatch:
         def teardown_class(self):
             self.home.do_quit()
         def test_dispatch_only_deliver(self):
-            ordernum="2022081288001102"
+            ordernum="2022081925003611"
             self.home.goto_dispatch() \
             .diapstch_order(ordernum) .input_dispatch_with_deliver()
+        def test_dispatch_with_all(self):
+            ordernum = "2022081925003611"
+            self.home.goto_dispatch().diapstch_order(ordernum).input_dispatch_with_advance_and_deliver_and_banlance()

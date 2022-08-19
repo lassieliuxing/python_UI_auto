@@ -33,6 +33,7 @@ class CreateOrderPage(BasePage):
         logger.info("进入创建受理单页面")
         # 输入”所属信息“-客户企业名/客户单号
         self.do_find(self.__BTN_CUSTOMERID).click()
+
         self.do_find(By.XPATH, f"//*[text()='{customer_name}']").click()
         self.do_send_keys(customer_num,self.__INPUT_CLIENTCODE)
         # 输入”发货信息“-发货人/电话/单位/地址

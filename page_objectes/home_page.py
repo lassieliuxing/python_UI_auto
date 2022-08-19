@@ -57,7 +57,8 @@ class HomePage(BasePage):
         self.do_find(self.__BTN_TRANSPORTSYS).click()
         sleep(1)
         self.do_find(self.__BTN_DISPATCH).click()
-        from page_objectes.transport.diapstchsys import DispatchListPage
+
+        from page_objectes.transport.diapstchsys.dispatch_list_page import DispatchListPage
         return DispatchListPage(self.driver)
 
     def goto_order_statement_detail(self):
@@ -69,7 +70,8 @@ class HomePage(BasePage):
         logger.info("进入整车运输页面-运输中")
         self.do_find(self.__BTN_TRANSPORTSYS).click()
         self.do_find(self.__BTN_FULL_TRANSPORT).click()
-        from page_objectes.transport.fulltransportsys import FullTransportIngPage
+
+        from page_objectes.transport.fulltransportsys.full_transporting_page import FullTransportIngPage
         return FullTransportIngPage(self.driver)
 
     def goto_full_transport_all(self):
@@ -77,5 +79,5 @@ class HomePage(BasePage):
         self.do_find(self.__BTN_TRANSPORTSYS).click()
         self.do_find(self.__BTN_FULL_TRANSPORT).click()
 
-        from page_objectes.transport.fulltransportsys import FullTransportIngPage
+        from page_objectes.transport.fulltransportsys.full_transporting_page import FullTransportIngPage
         return FullTransportIngPage(self.driver)
