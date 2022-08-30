@@ -1,13 +1,20 @@
-class OrderStatementDetailPage:
+from selenium.webdriver.common.by import By
+
+from page_objectes.base_page import BasePage
+
+
+class OrderStatementDetailPage(BasePage):
 
     def order_price_revision(self):
-
+        self.do_find(By.XPATH,"//a[text()='2022082940001112']/../..//span[@data-testid='setting-icon']").click()
+        self.do_find(By.XPATH,"//*[text()='费用调整']").click()
         # 点击费用调整
         # 跳转费用调整框
         from page_objectes.price_revision_page import PriceRevisionPage
-        return  PriceRevisionPage()
-    def order_price_total(self):
+        return  PriceRevisionPage(self.driver)
+    def get_order_price_total(self):
         pass
+        # self.do_find(By.XPATH,"//a[text()='2022082940001112']/../..//span[text()='-30']")
         # 判断费用调整总额
 
     def order_price_total_list(self):

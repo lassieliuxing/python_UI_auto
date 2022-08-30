@@ -12,13 +12,13 @@ from page_objectes.login_page import LoginPage
 
 class Test_Order:
     def setup_class(self):
-        self.home = LoginPage().login("13900000000","1111111l")
+        self.home = LoginPage().login("18900000000","1111111l")
     def teardown_class(self):
         self.home.do_quit()
 
     def test_create_order(self):
 
-        customer_name="创建开单客户3"
+        customer_name="客户企业2"
         cargoes_weight="100"
         cargoes_volume="0"
         cargoes_num="1"
@@ -27,7 +27,7 @@ class Test_Order:
         # list=[1,2,3,4,5,6,7,8,9]
         # for i in list:
         # customer_num = f"2022081900{3}"
-        customer_num = "20220819004"
+        customer_num = "202208260002"
         self.home\
                 .goto_create_order()\
                 .create_order(customer_name,customer_num,cargoes_weight,cargoes_volume,cargoes_num,cargoes_money,order_fee)

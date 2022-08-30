@@ -24,6 +24,9 @@ class CreateOrderPage(BasePage):
     __INPUT_CARGOES_VOLUME=(By.XPATH, "//input[@data-testid='cargoes-volume-input']")
     __INPUT_CARGOES_NUM=(By.XPATH, "//input[@data-testid='cargoes-num-input']")
     __INPUT_CARGOES_MONEY=(By.XPATH, "//input[@data-testid='cargoes-money-input']")
+    __INPUT_CARGOES_TOTAL_WEIGHT=(By.XPATH,"//input[@data-testid='cargo-total-weight-input']")
+    __INPUT_CARGOES_TOTAL_VOLUME=(By.XPATH,"//input[@data-testid='cargo-total-volume-input']")
+    __INPUT_CARGOES_TOTAL_NUMBER=(By.XPATH,"//input[@data-testid='cargo-total-number-input']")
     __INPUT_FEE=(By.XPATH, "//input[@data-testid='form-fee-input']")
     __BTN_ORDER_SUBMIT=(By.XPATH, "//button[@data-testid='create-order-submit-button']")
 
@@ -48,10 +51,11 @@ class CreateOrderPage(BasePage):
         self.do_send_keys("收货地址",self.__INPUT_DELIVER_ADRESS)
         # 输入”货物信息“-货物类型/货物名称/货物重量/货物体积/货物件数/货物价值
         self.do_send_keys("货物名称",self.__INPUT_CARGOES_NAME)
-        self.do_send_keys(cargoes_weight,self.__INPUT_CARGOES_WEIGHT)
-        self.do_send_keys(cargoes_volume,self.__INPUT_CARGOES_VOLUME)
-        self.do_send_keys(cargoes_num,self.__INPUT_CARGOES_NUM)
-        self.do_send_keys(cargoes_money,self.__INPUT_CARGOES_MONEY)
+        self.do_send_keys("600",self.__INPUT_CARGOES_TOTAL_WEIGHT)
+        # self.do_send_keys(cargoes_weight,self.__INPUT_CARGOES_WEIGHT)
+        # self.do_send_keys(cargoes_volume,self.__INPUT_CARGOES_VOLUME)
+        # self.do_send_keys(cargoes_num,self.__INPUT_CARGOES_NUM)
+        # self.do_send_keys(cargoes_money,self.__INPUT_CARGOES_MONEY)
         # 输入”费用信息“
         self.driver.execute_script(
             """document.querySelector("[data-testid='create-order-submit-button']").scrollIntoView()""")
