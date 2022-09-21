@@ -1,6 +1,8 @@
 """创建受理单页"""
 import time
 
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common import keys
 from selenium.webdriver.common.by import By
 
 from page_objectes.base_page import BasePage
@@ -32,7 +34,7 @@ class CreateOrderPage(BasePage):
 
 
 
-    def create_order(self,customer_name,customer_num,cargoes_weight,cargoes_volume,cargoes_num,cargoes_money,order_fee):
+    def create_order(self,customer_name,customer_num,order_fee):
         logger.info("进入创建受理单页面")
         # 输入”所属信息“-客户企业名/客户单号
         self.do_find(self.__BTN_CUSTOMERID).click()
@@ -42,16 +44,16 @@ class CreateOrderPage(BasePage):
         # 输入”发货信息“-发货人/电话/单位/地址
         self.do_send_keys("发货人",self.__INPUT_SHIPER_NAME)
         self.do_send_keys("发货电话",self.__INPUT_SHIPER_PHONE)
-        self.do_send_keys("发货单位",self.__INPUT_SHIPER_UNIT)
-        self.do_send_keys("发货地址",self.__INPUT_SHIPER_ADDRESS)
+        self.do_send_keys("发货单位2222222222222222222222222222222",self.__INPUT_SHIPER_UNIT)
+        self.do_send_keys("发货地址11111111111111111111111111111111",self.__INPUT_SHIPER_ADDRESS)
         # 输入”收货信息“-收货人/电话/单位/地址
         self.do_send_keys("收货人",self.__INPUT_DELIVER_NAME)
         self.do_send_keys("收货电话",self.__INPUT_DELIVER_PHONE)
-        self.do_send_keys("收货单位",self.__INPUT_DELIVER_UNIT)
-        self.do_send_keys("收货地址",self.__INPUT_DELIVER_ADRESS)
+        self.do_send_keys("收货单位3333333333333333",self.__INPUT_DELIVER_UNIT)
+        self.do_send_keys("收货地址44444444444444444",self.__INPUT_DELIVER_ADRESS)
         # 输入”货物信息“-货物类型/货物名称/货物重量/货物体积/货物件数/货物价值
         self.do_send_keys("货物名称",self.__INPUT_CARGOES_NAME)
-        self.do_send_keys("600",self.__INPUT_CARGOES_TOTAL_WEIGHT)
+        self.do_send_keys("103.33",self.__INPUT_CARGOES_TOTAL_WEIGHT)
         # self.do_send_keys(cargoes_weight,self.__INPUT_CARGOES_WEIGHT)
         # self.do_send_keys(cargoes_volume,self.__INPUT_CARGOES_VOLUME)
         # self.do_send_keys(cargoes_num,self.__INPUT_CARGOES_NUM)
@@ -60,7 +62,26 @@ class CreateOrderPage(BasePage):
         self.driver.execute_script(
             """document.querySelector("[data-testid='create-order-submit-button']").scrollIntoView()""")
         time.sleep(2)
-        self.do_send_keys(order_fee,self.__INPUT_FEE)
+        # ele = self.driver.execute_script(
+        #     """document.querySelector("[data-testid='form-fee-input']").value=''"""
+        # )
+        # ele.send_keys(200)
+        # self.driver.execute_script(
+        #     """ document.querySelector("[data-testid='form-fee-input']").focus()
+        #         document.execCommand('insertText', true, 200)"""
+        # )
+
+
+        # self.do_find(By.XPATH,"//input[@data-testid='form-fee-input']").clear()
+        # self.do_send_keys(order_fee,self.__INPUT_FEE)
+        input_ele=self.do_find(By.XPATH,"//input[@data-testid='form-fee-input']")
+        action = ActionChains(self.driver)
+        action.move_to_element(input_ele).double_click(input_ele).send_keys(200).perform()
+
+        # input_ele.send_keys(keys.BACK_SPACE).perform()
+
+        # self.driver.execute_script("arguments[0].value=200;",input_ele)
+        # input_ele.send_keys(200)
         # 点击”确认开单“
         self.do_find(self.__BTN_ORDER_SUBMIT).click()
         # self.get_screen()

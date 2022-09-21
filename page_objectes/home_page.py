@@ -39,45 +39,45 @@ class HomePage(BasePage):
 
     # 三级菜单
 
-    # 受理单结算
+     # 受理单结算
     __BTN_FINANCE_STATEMENT_MANAGE = (By.XPATH, "//span[text()='对账管理']")
     __BTN_FINANCE_INVOICE_MANAGE = (By.XPATH, "//span[text()='发票管理']")
     __BTN_FINANCE_RECEIVE_MANAGE = (By.XPATH, "//span[text()='收款管理']")
-    # 承运商结算
+     # 承运商结算
     __BTN_FINANCE_CARRIER_STATEMENT_VERIFY = (By.XPATH, "//span[text()='对账管理']")
 
     # 标签页
-    # 常用信息
+     # 常用信息
     __BTN_COMMON_ROUTE = (By.XPATH, "//*[text()='常用线路']")
     __BTN_COMMON_SHIPPER = (By.XPATH, "//*[text()='常用发货']")
     __BTN_COMMON_RECEIVE = (By.XPATH, "//*[text()='常用收货']")
     __BTN_COMMON_CARGOES = (By.XPATH, "//*[text()='常用货物']")
-    # 受理单管理
+     # 受理单管理
     __BTN_ORDER_TRANSPORTING = (By.XPATH, "//*[text()='运输中']")
     __BTN_ORDER_ALL = (By.XPATH, "//*[text()='全部']")
-    # 整车运输
+     # 整车运输
     __BTN_FULL_TRUCK_ALL = (By.XPATH, "//*[text()='全部']")
-    # 自有运输
+     # 自有运输
     __BTN_SELF_ALL = (By.XPATH, "//*[text()='全部']")
-    # 承运商运输
+     # 承运商运输
     __BTN_CARRIER_ALL = (By.XPATH, "//*[text()='全部']")
-    # 回单管理
+     # 回单管理
     __BTN_RECEIPT_VERIFIED = (By.XPATH, "//*[text()='已核销']")
-    # 对账管理
+     # 对账管理
     __BTN_FINANCE_FULL_TRUCK_STATEMENT_VERIFY = (By.XPATH, "//span[text()='对账核销']")
     __BTN_FINANCE_STATEMENT_VERIFIED = (By.XPATH, "//span[text()='已核销']")
-    # 发票管理
+     # 发票管理
     __BTN_FINANCE_INVOICE_RECORD = (By.XPATH, "//span[text()='开票记录']")
-    # 收款管理
+     # 收款管理
     __BTN_FINANCE_RECEIVE_RECORD = (By.XPATH, "//span[text()='收款记录']")
-    # 整车核销
+     # 整车核销
     __BTN_FINANCE_FULL_TRUCK_STATEMENT_VERIFIED = (By.XPATH, "//span[text()='已核销']")
-    # 其他费用核销
+     # 其他费用核销
     __BTN_FINANCE_OTHER_FEE_VERIFIED = (By.XPATH, "//span[text()='已核销']")
 
-    # 外协运力
+     # 外协运力
     __BTN_EXTRA_VECHILE = (By.XPATH, "//span[text()='车辆管理']")
-    # 自有运力
+     # 自有运力
     __BTN_SELF_VECHILE = (By.XPATH, "//span[text()='车辆管理']")
 
 
