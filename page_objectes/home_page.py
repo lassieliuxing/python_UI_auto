@@ -315,7 +315,13 @@ class HomePage(BasePage):
     def goto_carrier_manage(self):
         logger.info("进入承运商管理页面")
         self.do_find(self.__BTN_CARRIER_SYS).click()
+        sleep(2)
+
+        from page_objectes.carriersys.carrier_list_page import CarrierManagePage
+        return CarrierManagePage(self.driver)
 
     def goto_report_center(self):
+
         logger.info("进入报表中心页面")
         self.do_find(self.__BTN_REPORT_SYS).click()
+

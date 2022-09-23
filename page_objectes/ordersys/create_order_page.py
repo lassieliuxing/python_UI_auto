@@ -1,6 +1,7 @@
 """创建受理单页"""
 import time
 
+import allure
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common import keys
 from selenium.webdriver.common.by import By
@@ -8,7 +9,7 @@ from selenium.webdriver.common.by import By
 from page_objectes.base_page import BasePage
 from utils.log_utils import logger
 
-
+@allure.feature("创建受理单模块")
 class CreateOrderPage(BasePage):
     __BTN_CUSTOMERID=(By.ID, "customerId")
     # __BTN_CUSTOMRNAME=(By.XPATH, "//*[text()='创建开单客户3']")
@@ -33,7 +34,7 @@ class CreateOrderPage(BasePage):
     __BTN_ORDER_SUBMIT=(By.XPATH, "//button[@data-testid='create-order-submit-button']")
 
 
-
+    @allure.story("创建成功")
     def create_order(self,customer_name,customer_num,order_fee):
         logger.info("进入创建受理单页面")
         # 输入”所属信息“-客户企业名/客户单号
