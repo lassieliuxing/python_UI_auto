@@ -11,25 +11,33 @@ from page_objectes.login_page import LoginPage
 
 
 class Test_Order:
+
     def setup_class(self):
         self.home = LoginPage().login("18900000000","1111111l")
     def teardown_class(self):
         self.home.do_quit()
 
     def test_create_order(self):
+        count = 1
+        while count<=10:
 
-        customer_name="客户企业2"
-        cargoes_weight="100"
-        cargoes_volume="0"
-        cargoes_num="1"
-        cargoes_money="55.5"
-        order_fee="430"
-        customer_num = "202208260004"
-        self.home\
-                .goto_create_order()\
-                .create_order(customer_name,customer_num,order_fee)
-        # res=listpage.get_operate_result()
-        # assert "创建成功"==res
-        # print(res)
+            customer_name="客户企业2"
+            cargoes_weight="100"
+            cargoes_volume="0"
+            cargoes_num="1"
+            cargoes_money="55.5"
+            order_fee="430"
+            customer_num = "202208260004"
+            self.home\
+                    .goto_create_order()\
+                    .create_order(customer_name,customer_num,order_fee)
+            count=count+1
+            # res=listpage.get_operate_result()
+            # assert "创建成功"==res
+            # print(res)
+
+
+
+
 
 
