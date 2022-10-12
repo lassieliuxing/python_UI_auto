@@ -7,6 +7,7 @@ from selenium.webdriver.common import keys
 from selenium.webdriver.common.by import By
 
 from page_objectes.base_page import BasePage
+from utils.data_utils import data_time
 from utils.log_utils import logger
 
 @allure.feature("创建受理单模块")
@@ -37,23 +38,25 @@ class CreateOrderPage(BasePage):
     @allure.story("创建成功")
     def create_order(self,customer_name,customer_num,order_fee):
         logger.info("进入创建受理单页面")
+        self.driver.implicitly_wait(5)
+
         # 输入”所属信息“-客户企业名/客户单号
         self.do_find(self.__BTN_CUSTOMERID).click()
 
         self.do_find(By.XPATH, f"//*[text()='{customer_name}']").click()
         self.do_send_keys(customer_num,self.__INPUT_CLIENTCODE)
         # 输入”发货信息“-发货人/电话/单位/地址
-        self.do_send_keys("发货人",self.__INPUT_SHIPER_NAME)
-        self.do_send_keys("发货电话",self.__INPUT_SHIPER_PHONE)
+        self.do_send_keys("发货人1",self.__INPUT_SHIPER_NAME)
+        self.do_send_keys("发货电话1",self.__INPUT_SHIPER_PHONE)
         self.do_send_keys("发货单位2222222222222222222222222222222",self.__INPUT_SHIPER_UNIT)
         self.do_send_keys("发货地址11111111111111111111111111111111",self.__INPUT_SHIPER_ADDRESS)
         # 输入”收货信息“-收货人/电话/单位/地址
-        self.do_send_keys("收货人",self.__INPUT_DELIVER_NAME)
-        self.do_send_keys("收货电话",self.__INPUT_DELIVER_PHONE)
+        self.do_send_keys("收货人1",self.__INPUT_DELIVER_NAME)
+        self.do_send_keys("收货电话1",self.__INPUT_DELIVER_PHONE)
         self.do_send_keys("收货单位3333333333333333",self.__INPUT_DELIVER_UNIT)
         self.do_send_keys("收货地址44444444444444444",self.__INPUT_DELIVER_ADRESS)
         # 输入”货物信息“-货物类型/货物名称/货物重量/货物体积/货物件数/货物价值
-        self.do_send_keys("货物名称",self.__INPUT_CARGOES_NAME)
+        self.do_send_keys(f"货物名称{data_time()}",self.__INPUT_CARGOES_NAME)
         self.do_send_keys("103.33",self.__INPUT_CARGOES_TOTAL_WEIGHT)
         # self.do_send_keys(cargoes_weight,self.__INPUT_CARGOES_WEIGHT)
         # self.do_send_keys(cargoes_volume,self.__INPUT_CARGOES_VOLUME)

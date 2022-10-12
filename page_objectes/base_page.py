@@ -12,7 +12,7 @@ class BasePage:
             self.driver=base_driver
         else:
             self.driver=webdriver.Chrome()
-            self.driver.implicitly_wait(3)
+            self.driver.implicitly_wait(10)
             self.driver.maximize_window()
         if not self.driver.current_url.startswith("http"):
             self.driver.get(self._BASE_URL)
