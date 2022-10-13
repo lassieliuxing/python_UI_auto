@@ -293,6 +293,8 @@ class HomePage(BasePage):
     def goto_customer(self):
         logger.info("进入客户管理页面")
         self.do_find(self.__BTN_CUSTOMER_SYS).click()
+        from page_objectes.customersys.customer_list_page import CustomerListPage
+        return CustomerListPage(self.driver)
 
     def goto_transport_capacity_extra_driver(self):
         logger.info("进入外协运力-司机管理页面")
@@ -316,7 +318,6 @@ class HomePage(BasePage):
         logger.info("进入承运商管理页面")
         self.do_find(self.__BTN_CARRIER_SYS).click()
         sleep(2)
-
         from page_objectes.carriersys.carrier_list_page import CarrierManagePage
         return CarrierManagePage(self.driver)
 
