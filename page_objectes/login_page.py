@@ -3,10 +3,12 @@
 """登录"""
 import time
 
+from selenium.webdriver.chrome import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-
+from selenium import webdriver
 from page_objectes.base_page import BasePage
 from utils.log_utils import logger
 
@@ -20,6 +22,10 @@ class LoginPage(BasePage):
     def login(self,user_name,user_password):
         logger.info("进入登陆页面")
         # 访问登录
+        # option = Options()
+        # option.debugger_address = "localhost:9222"
+        # self.driver = webdriver.Chrome(options=option)
+
         self.driver.get("https://tpl-test.newchiwan.cn/")
         # 输入”用户名“
         self.do_send_keys(user_name,self.__INPUT_PHONE)

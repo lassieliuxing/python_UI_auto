@@ -19,7 +19,7 @@ class PriceRevisionPage(BasePage):
         # 点击确认
         # 跳转应收明细页
 
-    def price_revision_add(self):
+    def price_revision_increase(self):
         self.do_find(self.__BTN_AMOUNT_ADD).click()
         self.do_send_keys("100",self.__INPUT_AMOUNT)
         self.do_send_keys("应收明细调整原因-增加",self.__INPUT_TEXT)
