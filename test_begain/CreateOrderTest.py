@@ -25,7 +25,7 @@ class Test_Order:
         count = 1
         while count<=10:
 
-            customer_name="客户企业2"
+            customer_name="企业客户2"
             cargoes_weight="100"
             cargoes_volume="0"
             cargoes_num="1"
