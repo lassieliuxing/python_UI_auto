@@ -25,7 +25,7 @@ class Test_Order:
         count = 1
         while count<=10:
 
-            customer_name="企业客户2"
+            customer_name="单货物客户0106"
             cargoes_weight="100"
             cargoes_volume="0"
             cargoes_num="1"
@@ -34,7 +34,7 @@ class Test_Order:
             customer_num = f"20220826000{data_time()}"
             self.home\
                     .goto_create_order()\
-                    .create_order(customer_name,customer_num,order_fee)
+                    .create_order(customer_name)
             count=count+1
             # res=listpage.get_operate_result()
             # assert "创建成功"==res

@@ -13,8 +13,12 @@ from utils.log_utils import logger
 @allure.feature("创建受理单模块")
 class CreateOrderPage(BasePage):
     __BTN_CUSTOMERID=(By.ID, "customerId")
+    __BTN_PROJECT_INFO=(By.ID,"rc_select_166")
+    __BTN_INPUT_PROJECT_INFO=(By.XPATH,"//input[@aria-activedescendant='rc_select_166_list_1']")
     # __BTN_CUSTOMRNAME=(By.XPATH, "//*[text()='创建开单客户3']")
     __INPUT_CLIENTCODE=(By.ID, "clientCode")
+    __BTN_CONMON_LINE=(By.XPATH,"//div[@data-testid='dispatch-waybill-drivers-select']")
+
     __INPUT_SHIPER_NAME=(By.ID, "shipperName")
     __INPUT_SHIPER_PHONE=(By.ID, "shipperPhone")
     __INPUT_SHIPER_UNIT=(By.ID, "shipperUnit")
@@ -23,11 +27,15 @@ class CreateOrderPage(BasePage):
     __INPUT_DELIVER_PHONE = (By.ID, "takeDeliveryPhone")
     __INPUT_DELIVER_UNIT = (By.ID, "takeDeliveryUnit")
     __INPUT_DELIVER_ADRESS = (By.ID, "takeDeliveryAddress")
+    __BTN_CARGOE_TYPE=(By.ID,"orderCargoes_0_cargoTypeCode")
+    __BTN_INPUT_CARGOE_TYPE=(By.XPATH, "//input[@aria-activedescendant='orderCargoes_0_cargoTypeCode_list_3']")
+
     __INPUT_CARGOES_NAME=(By.XPATH, "//input[@data-testid='cargoes-name-input']")
     __INPUT_CARGOES_WEIGHT=(By.XPATH, "//input[@data-testid='cargoes-weight-input']")
     __INPUT_CARGOES_VOLUME=(By.XPATH, "//input[@data-testid='cargoes-volume-input']")
     __INPUT_CARGOES_NUM=(By.XPATH, "//input[@data-testid='cargoes-num-input']")
     __INPUT_CARGOES_MONEY=(By.XPATH, "//input[@data-testid='cargoes-money-input']")
+
     __INPUT_CARGOES_TOTAL_WEIGHT=(By.XPATH,"//input[@data-testid='cargo-total-weight-input']")
     __INPUT_CARGOES_TOTAL_VOLUME=(By.XPATH,"//input[@data-testid='cargo-total-volume-input']")
     __INPUT_CARGOES_TOTAL_NUMBER=(By.XPATH,"//input[@data-testid='cargo-total-number-input']")
@@ -36,7 +44,7 @@ class CreateOrderPage(BasePage):
 
 
     @allure.story("创建成功")
-    def create_order(self,customer_name,customer_num,order_fee):
+    def create_order(self,customer_name):
         logger.info("进入创建受理单页面")
         self.driver.implicitly_wait(5)
 
@@ -44,24 +52,37 @@ class CreateOrderPage(BasePage):
         self.do_find(self.__BTN_CUSTOMERID).click()
 
         self.do_find(By.XPATH, f"//*[text()='{customer_name}']").click()
-        self.do_send_keys(customer_num,self.__INPUT_CLIENTCODE)
+        # self.do_find(self.__BTN_PROJECT_INFO).click()
+        # self.do_find(self.__BTN_INPUT_PROJECT_INFO).click()
+        self.do_send_keys(f"230105{data_time()}",self.__INPUT_CLIENTCODE)
+        # 多条货物信息
+        self.do_find(self.__BTN_CONMON_LINE).click()
+        time.sleep(2)
+        # self.do_find(By.XPATH, "//*[text()='常用线路0105']").click()
+        self.do_find(By.XPATH, "//*[text()='常用线路单货物0106']").click()
         # 输入”发货信息“-发货人/电话/单位/地址
-        self.do_send_keys("发货人1",self.__INPUT_SHIPER_NAME)
-        self.do_send_keys("发货电话1",self.__INPUT_SHIPER_PHONE)
-        self.do_send_keys("发货单位2222222222222222222222222222222",self.__INPUT_SHIPER_UNIT)
-        self.do_send_keys("发货地址11111111111111111111111111111111",self.__INPUT_SHIPER_ADDRESS)
+        self.do_send_keys(f"发货人{data_time()}",self.__INPUT_SHIPER_NAME)
+        self.do_send_keys("16000000000",self.__INPUT_SHIPER_PHONE)
+        self.do_send_keys(f"发货单位{data_time()}",self.__INPUT_SHIPER_UNIT)
+        self.do_send_keys(f"发货地址{data_time()}",self.__INPUT_SHIPER_ADDRESS)
         # 输入”收货信息“-收货人/电话/单位/地址
-        self.do_send_keys("收货人1",self.__INPUT_DELIVER_NAME)
-        self.do_send_keys("收货电话1",self.__INPUT_DELIVER_PHONE)
-        self.do_send_keys("收货单位3333333333333333",self.__INPUT_DELIVER_UNIT)
-        self.do_send_keys("收货地址44444444444444444",self.__INPUT_DELIVER_ADRESS)
+        self.do_send_keys(f"收货人{data_time()}",self.__INPUT_DELIVER_NAME)
+        self.do_send_keys("19111111111",self.__INPUT_DELIVER_PHONE)
+        self.do_send_keys(f"收货单位{data_time()}",self.__INPUT_DELIVER_UNIT)
+        self.do_send_keys(f"收货地址{data_time()}",self.__INPUT_DELIVER_ADRESS)
         # 输入”货物信息“-货物类型/货物名称/货物重量/货物体积/货物件数/货物价值
-        self.do_send_keys(f"货物名称{data_time()}",self.__INPUT_CARGOES_NAME)
-        self.do_send_keys("103.33",self.__INPUT_CARGOES_TOTAL_WEIGHT)
+        # # 单条货物信息
+        # self.do_find(self.__BTN_CARGOE_TYPE).click()
+        # self.do_find(self.__BTN_INPUT_CARGOE_TYPE).click()
+        # self.do_send_keys(f"货物名称{data_time()}",self.__INPUT_CARGOES_NAME)
+        # self.do_send_keys("103.33",self.__INPUT_CARGOES_TOTAL_WEIGHT)
+
         # self.do_send_keys(cargoes_weight,self.__INPUT_CARGOES_WEIGHT)
         # self.do_send_keys(cargoes_volume,self.__INPUT_CARGOES_VOLUME)
         # self.do_send_keys(cargoes_num,self.__INPUT_CARGOES_NUM)
         # self.do_send_keys(cargoes_money,self.__INPUT_CARGOES_MONEY)
+
+
         # 输入”费用信息“
         self.driver.execute_script(
             """document.querySelector("[data-testid='create-order-submit-button']").scrollIntoView()""")
@@ -80,7 +101,7 @@ class CreateOrderPage(BasePage):
         # self.do_send_keys(order_fee,self.__INPUT_FEE)
         input_ele=self.do_find(By.XPATH,"//input[@data-testid='form-fee-input']")
         action = ActionChains(self.driver)
-        action.move_to_element(input_ele).double_click(input_ele).send_keys(200).perform()
+        action.move_to_element(input_ele).double_click(input_ele).send_keys(2000).perform()
 
         # input_ele.send_keys(keys.BACK_SPACE).perform()
 
@@ -88,6 +109,7 @@ class CreateOrderPage(BasePage):
         # input_ele.send_keys(200)
         # 点击”确认开单“
         self.do_find(self.__BTN_ORDER_SUBMIT).click()
+        logger.info("创建受理单成功")
         # self.get_screen()
         # ==>受理单
         from page_objectes.transport.ordermanagesys.order_list_page import OrdersListPage
