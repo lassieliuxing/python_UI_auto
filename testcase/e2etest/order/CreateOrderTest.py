@@ -17,15 +17,12 @@ class Test_Order:
     def setup_class(self):
         self.home = LoginPage().login("18900000000","1111111l")
 
-
     def teardown_class(self):
         self.home.do_quit()
 
     def test_create_order(self):
-        count = 1
-        while count<=10:
 
-            customer_name="单货物客户0106"
+            customer_name="客户060901"
             cargoes_weight="100"
             cargoes_volume="0"
             cargoes_num="1"
@@ -35,12 +32,8 @@ class Test_Order:
             self.home\
                     .goto_create_order()\
                     .create_order(customer_name)
-            count=count+1
             # res=listpage.get_operate_result()
             # assert "创建成功"==res
             # print(res)
-
-
-
 
 

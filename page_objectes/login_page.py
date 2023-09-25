@@ -18,16 +18,10 @@ class LoginPage(BasePage):
     __INPUT_PASSWORD=(By.ID, "password")
     __INPUT_CODE=(By.ID, "code")
     __BTN_LOGIN=(By.XPATH, "//button[@data-testid='signin-sumbit-button']")
-    __CHECK=(By.XPATH, "//span[text()='我已阅读、同意TPL']")
+    __CHECK=(By.CSS_SELECTOR, "input[class='ant-checkbox-input']")
 
     def login(self,user_name,user_password):
         logger.info("进入登陆页面")
-        # 访问登录
-        # option = Options()
-        # option.debugger_address = "localhost:9222"
-        # self.driver = webdriver.Chrome(options=option)
-
-        self.driver.get("https://saas-tpl-test.newchiwan.cn/")
         # 输入”用户名“
         self.do_send_keys(user_name,self.__INPUT_PHONE)
         # 输入”登陆密码“

@@ -8,8 +8,7 @@ from utils.log_utils import logger
 
 
 class OrdersListPage(BasePage):
-
-    __MSG_ADD_OPERATE=(By.XPATH, "//*[text()='创建开单客户3']")
+    __MSG_ADD_OPERATE = (By.XPATH, "//*[text()='创建开单客户3']")
 
     def get_add_order_result(self):
         logger.info("获取受理单列表页")
@@ -19,6 +18,7 @@ class OrdersListPage(BasePage):
         logging.info(f"断言获取到的实际结果为{res}")
         assert res != []
         return "创建成功"
+
     def get_order_detail(self):
         pass
         return OrdersListPage()

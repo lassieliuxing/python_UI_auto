@@ -1,3 +1,5 @@
+from typing import List
+
 from page_objectes.login_page import LoginPage
 
 
@@ -10,3 +12,4 @@ class Test_carrier:
     #     self.home.goto_carrier_manage().create_carrier().create_require_input()
     def test_query_carrier(self):
         self.home.goto_carrier_manage().search_carrier()
+
