@@ -51,7 +51,6 @@ def copy_file_to_taget():
         for j in newfileList:
             src_file=path+"/"+j
             print(src_file)
-
             shutil.move(src_file,dst_file)
 
             # shutil.copyfile(src_file,dst_file)  # 循环将每个文件拷贝到target的文件夹下
