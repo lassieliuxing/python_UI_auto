@@ -13,10 +13,11 @@ class Test_start:
         self.driver.quit()
 
     def test_login(self):
-        self.driver.get("https://tpl-test.newchiwan.cn/")
-        self.driver.find_element(by=By.ID, value="phone").send_keys("13900000000")
+        self.driver.get("https://tmsapp-test.newchiwan.com/")
+        self.driver.find_element(by=By.ID, value="phone").send_keys("18900000000")
         self.driver.find_element(by=By.ID, value="password").send_keys("1111111l")
         self.driver.find_element(by=By.ID, value="code").send_keys("1111")
+
         time.sleep(1)
         self.driver.find_element(by=By.XPATH, value="//button[@data-testid='signin-sumbit-button']").click()
         self.driver.maximize_window()

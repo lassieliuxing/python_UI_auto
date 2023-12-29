@@ -13,7 +13,7 @@ class HomePage(BasePage):
     __BTN_TRANSPORTSYS = (By.XPATH, "//*[text()='运输管理']")
     __BTN_FINANCE_SYS = (By.XPATH, "//span[text()='财务管理']")
     __BTN_CUSTOMER_SYS = (By.XPATH, "//span[text()='客户管理']")
-    __BTN_TRANSPORT_CAPACITY_SYS = (By.XPATH, "//span[text()='运力管理']")
+    __BTN_TRANSPORT_CAPACITY_SYS = (By.XPATH, "//div[text()='运力管理']")
     __BTN_CARRIER_SYS = (By.XPATH, "//span[text()='承运商管理']")
     __BTN_REPORT_SYS = (By.XPATH, "//span[text()='报表中心']")
     __BTN_PROCESS_SYS = (By.XPATH, "//span[text()='审批管理']")
@@ -38,8 +38,8 @@ class HomePage(BasePage):
     __BTN_FINANCE_NEWCHIWAN = (By.XPATH, "//span[text()='新赤湾结算']")
     __BTN_FINANCE_OTHER_FEE = (By.XPATH, "//span[text()='其他费用核销']")
     # 运力管理
-    __BTN_EXTRA_CAPACITY = (By.XPATH, "//span[text()='外协运力']")
-    __BTN_SELF_CAPACITY = (By.XPATH, "//span[text()='自有运力']")
+    __BTN_DRIVERS = (By.XPATH, "//span[text()='司机']")
+    __BTN_CARS = (By.XPATH, "//div[text()='车辆']")
     # 报表中心
     __BTN_REPORT_TRANSPORT = (By.XPATH, "//span[text()='承运报表']")
     __BTN_REPORT_OPERATE = (By.XPATH, "//span[text()='经营分析报表']")
@@ -98,6 +98,16 @@ class HomePage(BasePage):
     __BTN_EXTRA_DRIVER = (By.XPATH, "//span[text()='司机管理']")
     # 自有运力
     __BTN_SELF_DRIVER = (By.XPATH, "//span[text()='司机管理']")
+    __BTN_ADD=(By.CSS_SELECTOR,"html > body > div:nth-of-type(1) > section > section > div > main > div:nth-of-type(1) > form > div > div > div > div:nth-of-type(2) > button > span:nth-of-type(2)")
+    def goto_create_vehicle(self):
+        logger.info("进入车辆页面")
+        self.do_find(self.__BTN_TRANSPORT_CAPACITY_SYS).click()
+        sleep(10)
+        self.do_find(self.__BTN_CARS).click()
+        self.do_find(self.__BTN_ADD).click()
+        from page_objectes.driverandvehicle.CreateVehiclePage import CreateVehiclePage
+        return CreateVehiclePage(self.driver)
+
 
     def goto_create_order(self):
         logger.info("进入创建受理单页面")
@@ -348,3 +358,5 @@ class HomePage(BasePage):
     def goto_report_center(self):
         logger.info("进入报表中心页面")
         self.do_find(self.__BTN_REPORT_SYS).click()
+
+
